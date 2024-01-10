@@ -1,0 +1,301 @@
+(base) jadewang@mulan:~/robert/ultralytics/scripts$ conda activate ultralytics
+(ultralytics) jadewang@mulan:~/robert/ultralytics/scripts$ python train.yolov8n.coco128.py
+
+                   from  n    params  module                                       arguments
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]
+ 22        [15, 18, 21]  1    897664  ultralytics.nn.modules.head.Detect           [80, [64, 128, 256]]
+YOLOv8n summary: 225 layers, 3157200 parameters, 3157184 gradients
+
+Downloading https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt to yolov8n.pt...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 6.23M/6.23M [00:00<00:00, 52.9MB/s]
+requirements: Ultralytics requirement ['py-cpuinfo'] not found, attempting AutoUpdate...
+Collecting py-cpuinfo
+  Downloading py_cpuinfo-9.0.0-py3-none-any.whl (22 kB)
+Installing collected packages: py-cpuinfo
+Successfully installed py-cpuinfo-9.0.0
+
+requirements: AutoUpdate success ✅ 1.7s, installed 1 package: ['py-cpuinfo']
+requirements: ⚠️ Restart runtime or rerun command for updates to take effect
+
+Ultralytics YOLOv8.0.138 🚀 Python-3.9.16 torch-2.0.1+cpu CPU (Intel Xeon E5-2683 v3 2.00GHz)
+engine/trainer: task=detect, mode=train, model=yolov8n.pt, data=coco128.yaml, epochs=3, patience=50, batch=16, imgsz=640, save=True, save_period=-1, cache=False, device=None, workers=8, project=None, name=None, exist_ok=False, pretrained=True, optimizer=auto, verbose=True, seed=0, deterministic=True, single_cls=False, rect=False, cos_lr=False, close_mosaic=10, resume=False, amp=True, fraction=1.0, profile=False, overlap_mask=True, mask_ratio=4, dropout=0.0, val=True, split=val, save_json=False, save_hybrid=False, conf=None, iou=0.7, max_det=300, half=False, dnn=False, plots=True, source=None, show=False, save_txt=False, save_conf=False, save_crop=False, show_labels=True, show_conf=True, vid_stride=1, line_width=None, visualize=False, augment=False, agnostic_nms=False, classes=None, retina_masks=False, boxes=True, format=torchscript, keras=False, optimize=False, int8=False, dynamic=False, simplify=False, opset=None, workspace=4, nms=False, lr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=7.5, cls=0.5, dfl=1.5, pose=12.0, kobj=1.0, label_smoothing=0.0, nbs=64, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0, cfg=None, tracker=botsort.yaml, save_dir=/net/mulan/home/jadewang/robert/ultralytics/runs/detect/train
+
+Dataset 'coco128.yaml' images not found ⚠️, missing paths ['/net/mulan/home/jadewang/robert/datasets/coco128/images/train2017']
+Downloading https://ultralytics.com/assets/coco128.zip to /net/mulan/home/jadewang/robert/datasets/coco128.zip...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 6.66M/6.66M [00:00<00:00, 72.4MB/s]
+Unzipping /net/mulan/home/jadewang/robert/datasets/coco128.zip to /net/mulan/home/jadewang/robert/datasets...
+Dataset download success ✅ (0.8s), saved to /net/mulan/home/jadewang/robert/datasets
+
+
+                   from  n    params  module                                       arguments
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]
+ 22        [15, 18, 21]  1    897664  ultralytics.nn.modules.head.Detect           [80, [64, 128, 256]]
+Model summary: 225 layers, 3157200 parameters, 3157184 gradients
+
+Transferred 355/355 items from pretrained weights
+train: Scanning /net/mulan/home/jadewang/robert/datasets/coco128/labels/train2017... 126 images, 2 backgrounds, 0 corrupt: 100%|██████████| 128/1
+train: New cache created: /net/mulan/home/jadewang/robert/datasets/coco128/labels/train2017.cache
+val: Scanning /net/mulan/home/jadewang/robert/datasets/coco128/labels/train2017.cache... 126 images, 2 backgrounds, 0 corrupt: 100%|██████████| 1
+Plotting labels to /net/mulan/home/jadewang/robert/ultralytics/runs/detect/train/labels.jpg...
+optimizer: AdamW(lr=0.000119, momentum=0.9) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias(decay=0.0)
+Image sizes 640 train, 640 val
+Using 0 dataloader workers
+Logging results to /net/mulan/home/jadewang/robert/ultralytics/runs/detect/train
+Starting training for 3 epochs...
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+        1/3         0G      1.096      1.365      1.202        201        640: 100%|██████████| 8/8 [01:50<00:00, 13.83s/it]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 4/4 [00:35<00:00,  8.87s/it]
+                   all        128        929      0.658      0.532      0.615      0.457
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+        2/3         0G      1.216      1.443      1.268        136        640: 100%|██████████| 8/8 [01:40<00:00, 12.60s/it]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 4/4 [00:35<00:00,  8.89s/it]
+                   all        128        929      0.672      0.542      0.628      0.466
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+        3/3         0G      1.193      1.342      1.243        206        640: 100%|██████████| 8/8 [01:41<00:00, 12.74s/it]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 4/4 [00:36<00:00,  9.10s/it]
+                   all        128        929       0.69      0.532      0.631      0.468
+
+3 epochs completed in 0.119 hours.
+Optimizer stripped from /net/mulan/home/jadewang/robert/ultralytics/runs/detect/train/weights/last.pt, 6.5MB
+Optimizer stripped from /net/mulan/home/jadewang/robert/ultralytics/runs/detect/train/weights/best.pt, 6.5MB
+
+Validating /net/mulan/home/jadewang/robert/ultralytics/runs/detect/train/weights/best.pt...
+Ultralytics YOLOv8.0.138 🚀 Python-3.9.16 torch-2.0.1+cpu CPU (Intel Xeon E5-2683 v3 2.00GHz)
+Model summary (fused): 168 layers, 3151904 parameters, 0 gradients
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 4/4 [00:29<00:00,  7.45s/it]
+                   all        128        929      0.691      0.531      0.631      0.468
+                person        128        254      0.818      0.654      0.764      0.538
+               bicycle        128          6      0.663      0.329      0.331       0.26
+                   car        128         46      0.867      0.217      0.279      0.174
+            motorcycle        128          5      0.678      0.847      0.938      0.743
+              airplane        128          6      0.817      0.752      0.927      0.687
+                   bus        128          7      0.753      0.714      0.728      0.671
+                 train        128          3      0.565      0.667       0.83      0.681
+                 truck        128         12          1      0.327      0.522      0.328
+                  boat        128          6      0.299      0.167       0.36      0.233
+         traffic light        128         14      0.738      0.204      0.201      0.138
+             stop sign        128          2          1      0.971      0.995      0.707
+                 bench        128          9      0.815      0.494      0.633      0.382
+                  bird        128         16      0.911      0.625      0.894      0.556
+                   cat        128          4      0.876          1      0.995      0.791
+                   dog        128          9      0.658      0.889      0.871      0.648
+                 horse        128          2      0.573          1      0.995      0.518
+              elephant        128         17      0.848      0.824      0.918      0.674
+                  bear        128          1      0.624          1      0.995      0.895
+                 zebra        128          4      0.865          1      0.995      0.965
+               giraffe        128          9      0.898       0.98      0.973      0.713
+              backpack        128          6      0.648      0.333      0.379       0.22
+              umbrella        128         18      0.814        0.5      0.668      0.465
+               handbag        128         19          1          0      0.207      0.126
+                   tie        128          7       0.83        0.7      0.677      0.495
+              suitcase        128          4       0.61      0.787      0.828      0.592
+               frisbee        128          5       0.63        0.8       0.76      0.664
+                  skis        128          1      0.746          1      0.995      0.497
+             snowboard        128          7       0.75      0.714      0.755      0.492
+           sports ball        128          6      0.689      0.378      0.502      0.274
+                  kite        128         10      0.805      0.415      0.588      0.203
+          baseball bat        128          4       0.45       0.25      0.378      0.187
+        baseball glove        128          7      0.679      0.429      0.429      0.294
+            skateboard        128          5      0.811        0.6      0.599      0.446
+         tennis racket        128          7      0.695      0.334      0.502      0.365
+                bottle        128         18      0.508      0.344      0.366      0.219
+            wine glass        128         16      0.795      0.487       0.61      0.363
+                   cup        128         36      0.651       0.26      0.402      0.289
+                  fork        128          6      0.609      0.167      0.294      0.205
+                 knife        128         16      0.745      0.549      0.628      0.362
+                 spoon        128         22      0.511      0.191      0.349      0.182
+                  bowl        128         28      0.693      0.679      0.641      0.528
+                banana        128          1          0          0      0.111     0.0369
+              sandwich        128          2      0.323        0.5      0.662      0.662
+                orange        128          4          1      0.334      0.995      0.666
+              broccoli        128         11      0.396      0.182      0.254      0.213
+                carrot        128         24      0.817      0.458      0.673      0.434
+               hot dog        128          2      0.634          1      0.828      0.795
+                 pizza        128          5      0.791          1      0.995      0.843
+                 donut        128         14       0.65          1      0.926       0.84
+                  cake        128          4      0.725          1      0.995       0.88
+                 chair        128         35      0.565      0.514      0.462       0.26
+                 couch        128          6      0.423      0.333      0.614      0.469
+          potted plant        128         14      0.818      0.643      0.722      0.498
+                   bed        128          3      0.793      0.667      0.775      0.676
+          dining table        128         13      0.512      0.615      0.514       0.41
+                toilet        128          2      0.644        0.5      0.745      0.721
+                    tv        128          2      0.543       0.63      0.828      0.762
+                laptop        128          3          1          0      0.665      0.522
+                 mouse        128          2          1          0     0.0443    0.00443
+                remote        128          8      0.874        0.5      0.578      0.502
+            cell phone        128          8          0          0     0.0582     0.0384
+             microwave        128          3        0.6      0.667       0.83      0.699
+                  oven        128          5      0.456        0.4      0.343      0.272
+                  sink        128          6      0.372      0.167      0.203      0.125
+          refrigerator        128          5      0.667        0.4       0.65      0.522
+                  book        128         29      0.619      0.113      0.355       0.18
+                 clock        128          9      0.778      0.781      0.891      0.721
+                  vase        128          2      0.411          1      0.828      0.795
+              scissors        128          1          1          0      0.249     0.0746
+            teddy bear        128         21      0.939      0.333      0.636      0.431
+            toothbrush        128          5      0.747        0.4      0.672      0.424
+Speed: 4.0ms preprocess, 213.5ms inference, 0.0ms loss, 2.4ms postprocess per image
+Results saved to /net/mulan/home/jadewang/robert/ultralytics/runs/detect/train
+Ultralytics YOLOv8.0.138 🚀 Python-3.9.16 torch-2.0.1+cpu CPU (Intel Xeon E5-2683 v3 2.00GHz)
+Model summary (fused): 168 layers, 3151904 parameters, 0 gradients
+val: Scanning /net/mulan/home/jadewang/robert/datasets/coco128/labels/train2017.cache... 126 images, 2 backgrounds, 0 corrupt: 100%|██████████| 1
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 8/8 [00:25<00:00,  3.23s/it]
+                   all        128        929      0.677      0.547      0.626      0.463
+                person        128        254      0.805      0.665      0.766      0.539
+               bicycle        128          6      0.499      0.333      0.328      0.258
+                   car        128         46      0.816      0.217      0.279      0.174
+            motorcycle        128          5      0.684      0.874      0.938      0.743
+              airplane        128          6       0.82      0.767      0.927      0.687
+                   bus        128          7       0.74      0.714      0.728      0.671
+                 train        128          3      0.555      0.667       0.83      0.681
+                 truck        128         12          1      0.371      0.496      0.286
+                  boat        128          6      0.238      0.167      0.327      0.205
+         traffic light        128         14      0.738      0.204      0.201      0.138
+             stop sign        128          2          1      0.989      0.995      0.708
+                 bench        128          9      0.825      0.526      0.632      0.382
+                  bird        128         16       0.85      0.708      0.884      0.549
+                   cat        128          4      0.867          1      0.995      0.791
+                   dog        128          9      0.649      0.889      0.871      0.648
+                 horse        128          2      0.512          1      0.995      0.518
+              elephant        128         17      0.825       0.83      0.918      0.674
+                  bear        128          1      0.609          1      0.995      0.895
+                 zebra        128          4       0.86          1      0.995      0.965
+               giraffe        128          9      0.808      0.935      0.951      0.753
+              backpack        128          6      0.629      0.333      0.379      0.231
+              umbrella        128         18      0.703        0.5      0.663      0.462
+               handbag        128         19          1     0.0683      0.206      0.126
+                   tie        128          7      0.827      0.714      0.677      0.495
+              suitcase        128          4      0.662          1      0.828      0.592
+               frisbee        128          5      0.604        0.8      0.759      0.664
+                  skis        128          1      0.627          1      0.995      0.497
+             snowboard        128          7      0.727      0.714      0.755      0.491
+           sports ball        128          6      0.698      0.396      0.502      0.274
+                  kite        128         10      0.824      0.472      0.589      0.204
+          baseball bat        128          4      0.526       0.25      0.353      0.199
+        baseball glove        128          7      0.641      0.429      0.429      0.316
+            skateboard        128          5      0.863        0.6      0.599       0.44
+         tennis racket        128          7      0.708      0.357      0.502      0.337
+                bottle        128         18      0.524      0.369      0.368      0.217
+            wine glass        128         16      0.776      0.433      0.569      0.354
+                   cup        128         36      0.671      0.278      0.419      0.302
+                  fork        128          6      0.584      0.167      0.236      0.183
+                 knife        128         16       0.65      0.562      0.607      0.353
+                 spoon        128         22      0.595      0.202      0.351      0.197
+                  bowl        128         28      0.681      0.687      0.667      0.517
+                banana        128          1          0          0     0.0829     0.0344
+              sandwich        128          2      0.323        0.5      0.308      0.308
+                orange        128          4          1      0.371      0.995      0.666
+              broccoli        128         11      0.358      0.182      0.263      0.214
+                carrot        128         24      0.736       0.58      0.669      0.428
+               hot dog        128          2      0.658      0.974      0.828      0.828
+                 pizza        128          5      0.857          1      0.995      0.843
+                 donut        128         14      0.647          1      0.926      0.841
+                  cake        128          4      0.612          1      0.995       0.88
+                 chair        128         35       0.54      0.514      0.451      0.249
+                 couch        128          6      0.524        0.5      0.715      0.553
+          potted plant        128         14      0.784      0.643      0.722      0.498
+                   bed        128          3      0.764      0.667      0.863      0.655
+          dining table        128         13      0.465      0.538      0.486      0.387
+                toilet        128          2      0.629        0.5      0.745      0.721
+                    tv        128          2      0.563       0.69      0.828      0.762
+                laptop        128          3          1          0        0.6       0.48
+                 mouse        128          2          1          0     0.0683    0.00683
+                remote        128          8      0.858        0.5      0.613      0.523
+            cell phone        128          8          0          0     0.0576     0.0383
+             microwave        128          3      0.566      0.667       0.83      0.683
+                  oven        128          5      0.459        0.4      0.343      0.272
+                  sink        128          6      0.383      0.167      0.166      0.104
+          refrigerator        128          5      0.638        0.4      0.654      0.506
+                  book        128         29      0.638      0.123      0.376      0.201
+                 clock        128          9      0.782      0.798      0.892      0.722
+                  vase        128          2      0.367          1      0.828      0.795
+              scissors        128          1          1          0      0.249     0.0746
+            teddy bear        128         21       0.92      0.333      0.632      0.428
+            toothbrush        128          5      0.745        0.6      0.743      0.478
+Speed: 2.4ms preprocess, 187.9ms inference, 0.0ms loss, 2.3ms postprocess per image
+Results saved to /net/mulan/home/jadewang/robert/ultralytics/runs/detect/val
+
+Downloading https://ultralytics.com/images/bus.jpg to bus.jpg...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 476k/476k [00:00<00:00, 8.84MB/s]
+image 1/1 /net/mulan/home/jadewang/robert/ultralytics/scripts/bus.jpg: 640x480 4 persons, 1 bus, 1 stop sign, 198.2ms
+Speed: 5.0ms preprocess, 198.2ms inference, 19.0ms postprocess per image at shape (1, 3, 640, 480)
+Ultralytics YOLOv8.0.138 🚀 Python-3.9.16 torch-2.0.1+cpu CPU (Intel Xeon E5-2683 v3 2.00GHz)
+
+PyTorch: starting from /net/mulan/home/jadewang/robert/ultralytics/runs/detect/train/weights/best.pt with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (6.2 MB)
+requirements: Ultralytics requirement ['onnx>=1.12.0'] not found, attempting AutoUpdate...
+Collecting onnx>=1.12.0
+  Downloading onnx-1.14.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (14.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.6/14.6 MB 162.4 MB/s eta 0:00:00
+Requirement already satisfied: numpy in /net/mulan/home/jadewang/tools/miniconda3/envs/ultralytics/lib/python3.9/site-packages (from onnx>=1.12.0) (1.24.1)
+Collecting protobuf>=3.20.2 (from onnx>=1.12.0)
+  Obtaining dependency information for protobuf>=3.20.2 from https://files.pythonhosted.org/packages/01/cb/445b3e465abdb8042a41957dc8f60c54620dc7540dbcf9b458a921531ca2/protobuf-4.23.4-cp37-abi3-manylinux2014_x86_64.whl.metadata
+  Downloading protobuf-4.23.4-cp37-abi3-manylinux2014_x86_64.whl.metadata (540 bytes)
+Requirement already satisfied: typing-extensions>=3.6.2.1 in /net/mulan/home/jadewang/tools/miniconda3/envs/ultralytics/lib/python3.9/site-packages (from onnx>=1.12.0) (4.4.0)
+Downloading protobuf-4.23.4-cp37-abi3-manylinux2014_x86_64.whl (304 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 304.5/304.5 kB 175.9 MB/s eta 0:00:00
+Installing collected packages: protobuf, onnx
+Successfully installed onnx-1.14.0 protobuf-4.23.4
+
+requirements: AutoUpdate success ✅ 18.0s, installed 1 package: ['onnx>=1.12.0']
+requirements: ⚠️ Restart runtime or rerun command for updates to take effect
+
+
+ONNX: starting export with onnx 1.14.0 opset 17...
+============== Diagnostic Run torch.onnx.export version 2.0.1+cpu ==============
+verbose: False, log level: Level.ERROR
+======================= 0 NONE 0 NOTE 0 WARNING 0 ERROR ========================
+
+ONNX: export success ✅ 19.2s, saved as /net/mulan/home/jadewang/robert/ultralytics/runs/detect/train/weights/best.onnx (12.2 MB)
+
+Export complete (21.1s)
+Results saved to /net/mulan/home/jadewang/robert/ultralytics/runs/detect/train/weights
+Predict:         yolo predict task=detect model=/net/mulan/home/jadewang/robert/ultralytics/runs/detect/train/weights/best.onnx imgsz=640
+Validate:        yolo val task=detect model=/net/mulan/home/jadewang/robert/ultralytics/runs/detect/train/weights/best.onnx imgsz=640 data=/net/mulan/home/jadewang/robert/ultralytics/ultralytics/cfg/datasets/coco128.yaml
+Visualize:       https://netron.app
+(ultralytics) jadewang@mulan:~/robert/ultralytics/scripts$

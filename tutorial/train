@@ -1,0 +1,47 @@
+__add__: <bound method Dataset.__add__ of <ultralytics.data.dataset.YOLODataset object at 0x7f80b1f11520>>
+__class__: <class 'ultralytics.data.dataset.YOLODataset'>
+__class_getitem__: <bound method Generic.__class_getitem__ of <class 'ultralytics.data.dataset.YOLODataset'>>
+__delattr__: <method-wrapper '__delattr__' of YOLODataset object at 0x7f80b1f11520>
+__dir__: <built-in method __dir__ of YOLODataset object at 0x7f80b1f11520>
+__eq__: <method-wrapper '__eq__' of YOLODataset object at 0x7f80b1f11520>
+__format__: <built-in method __format__ of YOLODataset object at 0x7f80b1f11520>
+__ge__: <method-wrapper '__ge__' of YOLODataset object at 0x7f80b1f11520>
+__getattribute__: <method-wrapper '__getattribute__' of YOLODataset object at 0x7f80b1f11520>
+__gt__: <method-wrapper '__gt__' of YOLODataset object at 0x7f80b1f11520>
+__hash__: <method-wrapper '__hash__' of YOLODataset object at 0x7f80b1f11520>
+__init_subclass__: <bound method Generic.__init_subclass__ of <class 'ultralytics.data.dataset.YOLODataset'>>
+__le__: <method-wrapper '__le__' of YOLODataset object at 0x7f80b1f11520>
+__lt__: <method-wrapper '__lt__' of YOLODataset object at 0x7f80b1f11520>
+__module__: 'ultralytics.data.dataset'
+__ne__: <method-wrapper '__ne__' of YOLODataset object at 0x7f80b1f11520>
+__new__: <built-in method __new__ of type object at 0x55e43ab05d60>
+__orig_bases__: (typing.Generic[+T_co],)
+__parameters__: ()
+__reduce__: <built-in method __reduce__ of YOLODataset object at 0x7f80b1f11520>
+__reduce_ex__: <built-in method __reduce_ex__ of YOLODataset object at 0x7f80b1f11520>
+__repr__: <method-wrapper '__repr__' of YOLODataset object at 0x7f80b1f11520>
+__setattr__: <method-wrapper '__setattr__' of YOLODataset object at 0x7f80b1f11520>
+__sizeof__: <built-in method __sizeof__ of YOLODataset object at 0x7f80b1f11520>
+__slots__: ()
+__str__: <method-wrapper '__str__' of YOLODataset object at 0x7f80b1f11520>
+__subclasshook__: <built-in method __subclasshook__ of type object at 0x55e441885cb0>
+__weakref__: None
+_is_protocol: False
+augment: True
+batch_size: 16
+buffer: []
+cache_version: '1.0.2'
+collate_fn: <function YOLODataset.collate_fn at 0x7f80b1fb73a0>
+fraction: 1.0
+img_path: '/net/mulan/home/jadewang/robert/datasets/coco128/images/train2017'
+imgsz: 640
+max_buffer_length: 128
+ni: 128
+pad: 0.0
+prefix: '\x1b[34m\x1b[1mtrain: \x1b[0m'
+rand_interp_methods: [0, 1, 2, 3, 4]
+rect: False
+single_cls: False
+stride: 32
+use_keypoints: False
+use_segments: False
