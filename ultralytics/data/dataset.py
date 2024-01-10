@@ -103,6 +103,7 @@ class YOLODataset(BaseDataset):
         """Returns dictionary of labels for YOLO training."""
         self.label_files = img2label_paths(self.im_files)
         cache_path = Path(self.label_files[0]).parent.with_suffix('.cache')
+        
         try:
             import gc
             gc.disable()  # reduce pickle load time https://github.com/ultralytics/ultralytics/pull/1585
@@ -145,12 +146,15 @@ class YOLODataset(BaseDataset):
     # TODO: use hyp config to set all these augmentations
     def build_transforms(self, hyp=None):
         """Builds and appends transforms to the list."""
+        # print(f'dataset build_transforms {self.augment}')
         if self.augment:
             hyp.mosaic = hyp.mosaic if self.augment and not self.rect else 0.0
             hyp.mixup = hyp.mixup if self.augment and not self.rect else 0.0
             transforms = v8_transforms(self, self.imgsz, hyp)
         else:
+            # print(f'---------- do build_transforms ELSE')
             transforms = Compose([LetterBox(new_shape=(self.imgsz, self.imgsz), scaleup=False)])
+            # print(f'---------- transforms {transforms}')
         transforms.append(
             Format(bbox_format='xywh',
                    normalize=True,
@@ -159,6 +163,7 @@ class YOLODataset(BaseDataset):
                    batch_idx=True,
                    mask_ratio=hyp.mask_ratio,
                    mask_overlap=hyp.overlap_mask))
+        # print(f'dataset build_transforms transforms {transforms}')
         return transforms
 
     def close_mosaic(self, hyp):

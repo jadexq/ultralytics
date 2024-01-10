@@ -347,7 +347,8 @@ def plot_images(images,
         if i == max_subplots:  # if last batch has fewer images than we expect
             break
         x, y = int(w * (i // ns)), int(h * (i % ns))  # block origin
-        im = im.transpose(1, 2, 0)
+        #im = im.transpose(1, 2, 0) #jade
+        im = im[:3,:,:].transpose(1, 2, 0) #jade
         mosaic[y:y + h, x:x + w, :] = im
 
     # Resize (optional)

@@ -52,13 +52,13 @@ class BaseDataset(Dataset):
                  img_path,
                  imgsz=640,
                  cache=False,
-                 augment=True,
+                 augment=False, #jade change defacult to no augmentation
                  hyp=DEFAULT_CFG,
                  prefix='',
                  rect=False,
                  batch_size=16,
                  stride=32,
-                 pad=0.5,
+                 pad=0.5, #jade why not set to 0.0?
                  single_cls=False,
                  classes=None,
                  fraction=1.0):
@@ -69,7 +69,7 @@ class BaseDataset(Dataset):
         self.single_cls = single_cls
         self.prefix = prefix
         self.fraction = fraction
-        self.im_files = self.get_img_files(self.img_path)
+        self.im_files = self.get_img_files(self.img_path) #jade !!!
         self.labels = self.get_labels()
         self.update_labels(include_class=classes)  # single_cls and include_class
         self.ni = len(self.labels)  # number of images
@@ -81,6 +81,8 @@ class BaseDataset(Dataset):
             assert self.batch_size is not None
             self.set_rectangle()
 
+        # print(f'self.augment {self.augment}')
+
         # Buffer thread for mosaic images
         self.buffer = []  # buffer size = batch size
         self.max_buffer_length = min((self.ni, self.batch_size * 8, 1000)) if self.augment else 0
@@ -90,6 +92,7 @@ class BaseDataset(Dataset):
             cache = False
         self.ims, self.im_hw0, self.im_hw = [None] * self.ni, [None] * self.ni, [None] * self.ni
         self.npy_files = [Path(f).with_suffix('.npy') for f in self.im_files]
+        
         if cache:
             self.cache_images(cache)
 
@@ -120,6 +123,7 @@ class BaseDataset(Dataset):
             raise FileNotFoundError(f'{self.prefix}Error loading data from {img_path}\n{HELP_URL}') from e
         if self.fraction < 1:
             im_files = im_files[:round(len(im_files) * self.fraction)]
+        
         return im_files
 
     def update_labels(self, include_class: Optional[list]):
@@ -145,27 +149,36 @@ class BaseDataset(Dataset):
         """Loads 1 image from dataset index 'i', returns (im, resized hw)."""
         im, f, fn = self.ims[i], self.im_files[i], self.npy_files[i]
         if im is None:  # not cached in RAM
-            if fn.exists():  # load npy
-                im = np.load(fn)
+            if fn.exists():  # load npy                
+                im = np.load(fn)            
+                #jade, double the channels
+                #b_,g_,r_ = cv2.split(im)
+                #im = cv2.merge((b_,g_,r_,b_,g_,r_))
             else:  # read image
-                im = cv2.imread(f)  # BGR
+                im = np.load(fn)            
+                #im = cv2.imread(f)  # BGR
+                #jade, double the channels
+                #b_,g_,r_ = cv2.split(im)
+                #im = cv2.merge((b_,g_,r_,b_,g_,r_))
                 if im is None:
                     raise FileNotFoundError(f'Image Not Found {f}')
             h0, w0 = im.shape[:2]  # orig hw
             r = self.imgsz / max(h0, w0)  # ratio
+            # print(f'before {im.shape}') #jade
             if r != 1:  # if sizes are not equal
                 interp = cv2.INTER_LINEAR if (self.augment or r > 1) else cv2.INTER_AREA
                 im = cv2.resize(im, (min(math.ceil(w0 * r), self.imgsz), min(math.ceil(h0 * r), self.imgsz)),
                                 interpolation=interp)
 
             # Add to buffer if training with augmentations
+            # print(f'load_image self.augment: {self.augment}')
             if self.augment:
                 self.ims[i], self.im_hw0[i], self.im_hw[i] = im, (h0, w0), im.shape[:2]  # im, hw_original, hw_resized
                 self.buffer.append(i)
                 if len(self.buffer) >= self.max_buffer_length:
                     j = self.buffer.pop(0)
                     self.ims[j], self.im_hw0[j], self.im_hw[j] = None, None, None
-
+            # print(f'after {im.shape}') #jade
             return im, (h0, w0), im.shape[:2]
 
         return self.ims[i], self.im_hw0[i], self.im_hw[i]
@@ -237,6 +250,8 @@ class BaseDataset(Dataset):
 
     def __getitem__(self, index):
         """Returns transformed label information for given index."""
+        # if not self.augment:
+        # if self.augment:
         return self.transforms(self.get_image_and_label(index))
 
     def get_image_and_label(self, index):
@@ -268,7 +283,8 @@ class BaseDataset(Dataset):
                 # Val transforms
                 return Compose([])
         """
-        raise NotImplementedError
+        return Compose([ToTensor()])
+        #raise NotImplementedError
 
     def get_labels(self):
         """Users can custom their own format here.

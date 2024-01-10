@@ -41,6 +41,7 @@ class DetectionTrainer(BaseTrainer):
 
     def preprocess_batch(self, batch):
         """Preprocesses a batch of images by scaling and converting to float."""
+        #breakpoint()
         batch['img'] = batch['img'].to(self.device, non_blocking=True).float() / 255
         return batch
 
